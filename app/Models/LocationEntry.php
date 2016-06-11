@@ -27,4 +27,14 @@ class LocationEntry extends Model
      */
     protected $fillable = ['longitude', 'latitude', 'device_identifier', 'taken_at'];
 
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'longitude' => 'float',
+        'latitude' => 'float',
+    ];
 }
