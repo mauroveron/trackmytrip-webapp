@@ -5,23 +5,32 @@ namespace App\Http\Controllers;
 use App\Models\LocationEntry;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-
 class ApiController extends Controller
 {
+
+    /**
+     * Returns the latest 200 location entries
+     **
+     * @return JSON
+     */
+    public function displayLocationEntries()
+    {
+        $entries = LocationEntry::orderBy('taken_at')->limit(200)->get();
+
+        return ['status' => 'ok', 'status_message' => 'Query was successful', 'data' => $entries];
+    }
 
     /**
      * Save the multiple locations entry into database
      **
      * @return JSON
      */
-    public function saveLocations()
+    public function saveLocationEntries()
     {
-        return $this->request->all();
+        $inputEntries = $this->request->all();
 
-        $inputEntries = [];
         foreach ($inputEntries as $inputEntry) {
-            $entry = new LocationEntry();
+            $locationEntry                    = new LocationEntry();
             $locationEntry->longitude         = $inputEntry->longitude;
             $locationEntry->latitude          = $inputEntry->latitude;
             $locationEntry->taken_at          = $inputEntry->timestamp;
@@ -29,6 +38,6 @@ class ApiController extends Controller
             $locationEntry->save();
         }
 
-        return ['status' => 'ok', 'message' => 'Successfully saved ' . count($inputEntries) . ' location entries'];
+        return ['status' => 'ok', 'status_message' => 'Successfully saved ' . count($inputEntries) . ' location entries'];
     }
 }
