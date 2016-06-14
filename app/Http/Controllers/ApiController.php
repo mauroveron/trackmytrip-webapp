@@ -33,7 +33,7 @@ class ApiController extends Controller
             $locationEntry                    = new LocationEntry();
             $locationEntry->longitude         = $inputEntry->longitude;
             $locationEntry->latitude          = $inputEntry->latitude;
-            $locationEntry->taken_at          = $inputEntry->timestamp;
+            $locationEntry->taken_at          = date('Y-m-d H:i:s',$inputEntry->timestamp);
             $locationEntry->device_identifier = $inputEntry->device_identifier;
             $locationEntry->save();
         }
