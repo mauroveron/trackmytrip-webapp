@@ -25,7 +25,15 @@ class LocationEntry extends Model
      *
      * @var array
      */
-    protected $fillable = ['longitude', 'latitude', 'device_identifier', 'taken_at'];
+    protected $fillable = [
+        'longitude',
+        'latitude',
+        'device_identifier',
+        'taken_at',
+        'altitude',
+        'speed',
+        'course',
+    ];
 
     /**
      * The attributes that should be casted to native types.
@@ -33,8 +41,11 @@ class LocationEntry extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'longitude' => 'float',
-        'latitude' => 'float',
+        'id'             => 'integer',
+        'longitude'      => 'float',
+        'latitude'       => 'float',
+        'altitude'       => 'float',
+        'speed'          => 'float',
+        'course'         => 'float',
     ];
 }

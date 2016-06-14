@@ -35,6 +35,9 @@ class ApiController extends Controller
             $locationEntry->latitude          = $inputEntry['latitude'];
             $locationEntry->taken_at          = date('Y-m-d H:i:s', $inputEntry['timestamp']);
             $locationEntry->device_identifier = $inputEntry['device_identifier'];
+            $locationEntry->altitude          = $inputEntry['altitude'];
+            $locationEntry->speed             = $inputEntry['speed'];
+            $locationEntry->course            = $inputEntry['course'];
             $locationEntry->save();
         }
 
