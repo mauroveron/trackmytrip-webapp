@@ -15,8 +15,8 @@ class CreateLocationEntriesTable extends Migration
         Schema::create('location_entries', function($table)
         {
             $table->increments('id')->unique();
-            $table->float('longitude');
-            $table->float('latitude');
+            $table->double('longitude', 10, 6);
+            $table->double('latitude', 10, 6);
             $table->string('device_identifier');
             $table->timestamp('taken_at');
             $table->timestamps();
