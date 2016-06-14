@@ -15,7 +15,7 @@ class ApiController extends Controller
      */
     public function displayLocationEntries()
     {
-        $entries = LocationEntry::orderBy('taken_at')->limit(200)->get();
+        $entries = LocationEntry::orderBy('taken_at')->limit(10000)->get();
 
         return ['status' => 'ok', 'status_message' => 'Query was successful', 'data' => $entries];
     }
